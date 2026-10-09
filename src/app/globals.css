@@ -1,0 +1,102 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --font-display: "Cormorant Garamond", serif;
+  --font-accent: "Marcellus", serif;
+  --font-sans: "Jost", system-ui, sans-serif;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    @apply bg-cream text-ink font-sans antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3, h4 {
+    @apply font-display text-ink;
+    letter-spacing: -0.01em;
+  }
+  ::selection {
+    background: #efdaa8;
+    color: #2a241c;
+  }
+  /* Elegant gold scrollbar */
+  ::-webkit-scrollbar {
+    width: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #f4f2ec;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #c6a15b;
+    border: 2px solid #f4f2ec;
+  }
+}
+
+@layer components {
+  .container-lux {
+    @apply mx-auto w-full max-w-[1280px] px-5 sm:px-8;
+  }
+
+  /* Section eyebrow label */
+  .eyebrow {
+    @apply font-accent text-[11px] uppercase tracking-luxe text-gold-700;
+  }
+
+  /* Primary gold button */
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-gold-sheen bg-[length:200%_auto] px-8 py-3.5
+      font-accent text-[13px] uppercase tracking-wide2 text-ink transition-all duration-500
+      hover:bg-[position:right_center] hover:shadow-cardHover;
+  }
+  .btn-ink {
+    @apply inline-flex items-center justify-center gap-2 rounded-full bg-ink px-8 py-3.5
+      font-accent text-[13px] uppercase tracking-wide2 text-cream transition-colors duration-300
+      hover:bg-ink-light;
+  }
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 rounded-full border border-gold-500 px-8 py-3.5
+      font-accent text-[13px] uppercase tracking-wide2 text-gold-700 transition-colors duration-300
+      hover:bg-gold-500 hover:text-ink;
+  }
+
+  .link-underline {
+    @apply relative after:absolute after:-bottom-1 after:left-0 after:h-px after:w-0 after:bg-gold-600
+      after:transition-all after:duration-300 hover:after:w-full;
+  }
+
+  .hairline {
+    @apply h-px w-full bg-gradient-to-r from-transparent via-gold-400/50 to-transparent;
+  }
+
+  .divider-mini {
+    @apply mx-auto h-px w-14 bg-gold-500;
+  }
+}
+
+/* Boss: sharp edges everywhere — perfect rectangles & squares, no rounding.
+   Universal !important beats all Tailwind radius utilities; the .sl-round
+   class (higher specificity) re-exempts the few genuine circles (cursor). */
+* {
+  border-radius: 0 !important;
+}
+.sl-round {
+  border-radius: 9999px !important;
+}
+
+@layer utilities {
+  .text-balance {
+    text-wrap: balance;
+  }
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
